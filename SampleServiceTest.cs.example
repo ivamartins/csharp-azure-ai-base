@@ -1,0 +1,27 @@
+// Basic unit test example for C# (using xUnit - add to your project)
+// Install: dotnet add package xunit
+
+using Xunit;
+
+public class SampleServiceTest
+{
+    [Fact]
+    public void EnrichLegacyEvent_ShouldAddMetadata()
+    {
+        // Arrange
+        var input = "{\"id\":1,\"amount\":99.9}";
+        
+        // Act
+        var result = EnrichEvent(input);  // assume your method
+        
+        // Assert
+        Assert.Contains("ENRICHED", result);
+        Assert.Contains("legacy", result.ToLower());
+    }
+
+    // Mock implementation for the example
+    private string EnrichEvent(string raw)
+    {
+        return $"ENRICHED by azure-func-ai-base: {raw}";
+    }
+}
