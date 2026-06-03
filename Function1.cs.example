@@ -1,0 +1,32 @@
+// Example Azure Function (C#) for AI enrichment on legacy events
+// Place in your Functions project. Requires Azure.ServiceBus and LLM SDK (e.g. Azure.AI.OpenAI or Anthropic).
+
+using System.Threading.Tasks;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Extensions.Logging;
+
+namespace Company.Function
+{
+    public class Function1
+    {
+        private readonly ILogger _logger;
+
+        public Function1(ILoggerFactory loggerFactory)
+        {
+            _logger = loggerFactory.CreateLogger<Function1>();
+        }
+
+        [Function("LegacyAiEnrich")]
+        public async Task Run([ServiceBusTrigger("legacy-queue", Connection = "ServiceBusConnection")] string message)
+        {
+            _logger.LogInformation($"Processing legacy event: {message}");
+
+            // TODO: Call your LLM (Claude, Grok, ChatGPT) via SDK or REST
+            // Example pseudocode:
+            // var enriched = await CallClaudeOrGrokAsync("Enrich this legacy order data: " + message);
+
+            // Forward to next step, DB, or another topic
+            _logger.LogInformation($"Enriched result would go here.");
+        }
+    }
+}

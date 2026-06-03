@@ -1,0 +1,9 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+local.settings.json
+EOL
+
+echo "csharp-azure-ai-base prepared as next (template with examples and bilingual READMEs)"
