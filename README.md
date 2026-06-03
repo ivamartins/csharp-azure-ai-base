@@ -20,6 +20,19 @@ Minimal, functional Azure Functions (C#) + LLM integration base.
 
 See code in `Function1.cs` (example structure).
 
+## Running the tests
+
+Once you have a real .csproj / test project set up (xUnit recommended):
+
+```bash
+dotnet restore
+dotnet test
+```
+
+Example test file included: `SampleServiceTest.cs.example` (basic xUnit test for an enrichment function). Convert the `.example` into real test files when scaffolding the project.
+
+**Português:** Após criar o projeto real com `dotnet new`, rode `dotnet test`. O exemplo de teste unitário básico (xUnit) está em `SampleServiceTest.cs.example`.
+
 ## Extend for Real Use
 
 - Replace mock LLM call with real Azure OpenAI / xAI / Anthropic SDK.
