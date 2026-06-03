@@ -12,13 +12,28 @@ Base funcional mínima em Azure Functions (C#) + integração com LLMs/IA.
   - Enriquecimento com LLM (Claude, Grok, ChatGPT) para dados legados ou workflows
   - Combinação com event-driven (Kafka/Flink) ou outras bases
 
-## Início Rápido (Funcional)
+## Início Rápido / Como rodar a aplicação
 
-1. Tenha .NET 8+ SDK e Azure Functions Core Tools.
-2. `func start` (após restore/build).
-3. A função de exemplo processa uma mensagem e enriquece com chamada LLM (mock ou real via API key).
+**Pré-requisitos:** .NET 8+ SDK e Azure Functions Core Tools (`func`).
 
-Veja o código em `Function1.cs.example` (estrutura de exemplo).
+**Passo a passo (local):**
+
+1. Restore e build:
+   ```bash
+   dotnet restore
+   dotnet build
+   ```
+
+2. Inicie a function localmente:
+   ```bash
+   func start
+   ```
+
+3. A função de exemplo processa mensagens e enriquece com LLM (mock ou real via chave de API).
+
+Veja o código em `Function1.cs.example` (estrutura de exemplo). Quando transformar os exemplos em um projeto real, os comandos acima funcionarão.
+
+## Executando os testes
 
 ## Executando os testes
 
