@@ -1,5 +1,9 @@
 # csharp-azure-ai-base
 
+[![CI](https://github.com/ivamartins/csharp-azure-ai-base/actions/workflows/ci.yml/badge.svg)](https://github.com/ivamartins/csharp-azure-ai-base/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![.NET](https://img.shields.io/badge/.NET-8-blue)](https://dotnet.microsoft.com/)
+
 Minimal, functional Azure Functions (C#) + LLM integration base.
 
 **This is a core framework example for high-volume backend + AI integrations on Azure (C# / .NET).**

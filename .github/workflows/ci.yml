@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup example project
+        run: |
+          dotnet new func --name CodeSolutions.AI.Base --output ./tmp-project
+          cp Function1.cs.example ./tmp-project/Function1.cs
+          cp SampleServiceTest.cs.example ./tmp-project/SampleServiceTest.cs
+          cd ./tmp-project
+          dotnet add package Microsoft.Azure.Functions.Worker
+          dotnet add package Microsoft.Azure.Functions.Worker.Extensions.ServiceBus
+          dotnet add package Azure.AI.OpenAI --version 1.0.0-beta.12
+          dotnet add package Moq
+
+      - name: Build
+        run: cd ./tmp-project && dotnet build --no-restore
+
+      - name: Test
+        run: cd ./tmp-project && dotnet test --no-build --verbosity normal
+
+      - name: Cleanup
+        if: always()
+        run: rm -rf ./tmp-project
